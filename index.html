@@ -48,7 +48,9 @@ function loadLang() {
         lang = Cookies.get("kcd_codex_lang");
     }
     if (!lang) lang = "en";
-    if (!jQuery.inArray(lang, validLangs)==-1) return false;
+    if (!myInArray(lang, validLangs)) {
+        lang = "en";
+    }
     $("#codex-me").load("lang/"+lang+".html", function() {
         startThings();
     });
@@ -61,10 +63,24 @@ function loadLang() {
 }
 function changeLang(lang) {
     if (!lang) lang = "en";
-    if (!jQuery.inArray(lang, validLangs)==-1) return false;
+    if (!myInArray(lang, validLangs)) {
+        lang = "en";
+    }
     $("#codex-me").empty();
     Cookies.set('kcd_codex_lang', lang);
     return loadLang(lang);
+}
+
+function myInArray(what, arr)
+{
+    if (arr && what) {
+        for (i = 0; i < arr.length; i++) { 
+            if (arr[i]==what) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function startThings()
