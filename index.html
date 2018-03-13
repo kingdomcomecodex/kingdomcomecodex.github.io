@@ -54,7 +54,8 @@ function loadLang() {
     $("#codex-me").load("lang/"+lang+".html", function() {
         startThings();
     });
-    if (jQuery.inArray(lang, specialFontLang)!=-1) {
+
+    if (myInArray(lang, specialFontLang)) {
         $(document.body).addClass("specialChar");
     } else {
         $(document.body).removeClass("specialChar");
@@ -87,15 +88,19 @@ function startThings()
 {
     lazyload();
 
-    if (Cookies.get("kcd_codex_last_read")) {
-        showEntry(Cookies.get("kcd_codex_last_read"));
-        Cookies.remove("kcd_codex_last_read");
+    if (directLoadEntry()) {
+        showEntry(directLoadEntry());
     } else {
-        showOnly("welcome");
-        if(window.innerWidth <= 768) {
-            
+        if (Cookies.get("kcd_codex_last_read")) {
+            showEntry(Cookies.get("kcd_codex_last_read"));
+            Cookies.remove("kcd_codex_last_read");
         } else {
-            setTimeout('openNav()', 500);
+            showOnly("welcome");
+            if(window.innerWidth <= 768) {
+                
+            } else {
+                setTimeout('openNav()', 500);
+            }
         }
     }
 
@@ -157,6 +162,31 @@ function startThings()
     }
 
     limpiarTeclasTutorial();
+}
+
+function cleanUrl()
+{
+    var direct = decodeURIComponent(window.location).split("#");
+    return direct[0];
+}
+
+function directLoadEntry()
+{
+    var direct = decodeURIComponent(window.location).split("#");
+    if ($.isArray(direct) && direct[1]) {
+        if ($("div#entry."+direct[1])) {
+            return direct[1];
+        }
+    }
+    return false;
+}
+
+function permalink(data)
+{
+    if (data) {
+        prompt("", cleanUrl()+"#"+data);
+    }
+    return false;
 }
 
 function plusWidth()
@@ -331,9 +361,9 @@ function openNav() {
     if(window.innerWidth <= 768) {
         $("#menu").css('width', '100%');
     } else {
-        $("#menu").css('width', '25%');
+        $("#menu").css('width', '27%');
     }    
-    $("#main").css('margin-left', '25%');
+    $("#main").css('margin-left', '27%');
     var cual = cual_cat();
     if (cual) {
         despliega_force(cual);    
