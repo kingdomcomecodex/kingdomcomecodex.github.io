@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="media/js/lazy.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="media/js/jquery.leanModal.min.js"></script>
   </head>
 <body>
 
@@ -21,6 +22,17 @@
 <div id="main">
 
 <div id="codex-me"></div>
+
+<div id="divmapiframe" style="display:none;background-color:white;">
+    <div class="titleiframe">
+        Kingdom Come: Deliverance online map
+        <div id="linkiframe"><a id="linkiframesub" target="_blank"></a></div>
+        <div class="close-button">X</div>
+    </div>
+    <div>
+        <iframe id="mapiframe" style="width:100%;height:100%"></iframe>
+    </div>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -179,7 +191,7 @@ function directLoadEntry()
 {
     var direct = decodeURIComponent(window.location).split("#");
     if ($.isArray(direct) && direct[1]) {
-        if ($("div#entry."+direct[1])) {
+        if ($("div#entry."+direct[1]).length) {
             return direct[1];
         }
     }
@@ -492,7 +504,25 @@ function openInMap(x, y, zoom)
     if (x && y) {
         var link = 'https://kingdomcomemap.github.io/#'+zoom+'/'+y+'.0/'+x+'.0';
         var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'';
-        window.open(link, '_blank');
+        //window.open(link, '_blank');
+        $(document.body).append('<a href="#divmapiframe" id="tmplink"></a>');
+        if(window.innerWidth <= 768) {
+            var topPos = 0;
+        } else {
+            var topPos = 50;
+        }
+        $("#tmplink").leanModal({ top: topPos, closeButton: ".close-button" });
+        $("#mapiframe").attr("src", link);
+        $("#linkiframesub").attr("href", link);
+        $("#linkiframesub").text(link);
+        $("#tmplink").click();
+        $("#tmplink").remove();
+        if(window.innerWidth <= 768) {
+            $("#divmapiframe").css("left", "0");
+            $("#divmapiframe").css("margin-left", "0");
+            $("#divmapiframe").css("width", "100%");
+            $("#divmapiframe").css("height", "93%");
+        }
     }
 }
 </script>
