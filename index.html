@@ -161,6 +161,11 @@ function startThings()
         $("div#entry").css("max-width", Cookies.get('kcd_codex_width'));
     }
 
+    
+    $("#escudo").dblclick(function() {
+        showAll();
+    });
+
     limpiarTeclasTutorial();
 }
 
@@ -193,7 +198,7 @@ function plusWidth()
 {
     $("div#entry").each(function() {
         var mw = parseInt( $(this).css("max-width"), 10);
-        if (mw>=50 && mw!=100) {
+        if (mw>=35 && mw!=100) {
             mw = mw + 15;
             $(this).css("max-width", mw+"%");
             Cookies.set('kcd_codex_width', $(this).css("max-width"));
@@ -337,7 +342,9 @@ function showOnly(cat) {
 }
 function showAll() {
     $('div#entry').show("fast");
+    colorize(null, null);
     hideNavControls();
+    closeNav();
 }
 function hideNavControls() {
     $("div#nav-controls").each(function() {
@@ -477,6 +484,15 @@ function previous(id)
     if (cual) {
         cual = cual.replace("menu_item_", "");
         showEntry(cual);
+    }
+}
+
+function openInMap(x, y, zoom)
+{
+    if (x && y) {
+        var link = 'https://kingdomcomemap.github.io/#'+zoom+'/'+y+'.0/'+x+'.0';
+        var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'';
+        window.open(link, '_blank');
     }
 }
 </script>

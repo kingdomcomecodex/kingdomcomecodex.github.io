@@ -400,6 +400,30 @@ opacity:0.7;
 display:none;
 }
 
+.open-in-map {
+width:32px;
+height:32px;
+background:url('../img/open-in-map.png') no-repeat;
+cursor:pointer;
+float:left;
+opacity:0.7;
+}
+.map-top {
+opacity:0.6;
+margin-right:8px;
+margin-top:-2px;
+}
+
+.icon-location {
+width:16px;
+height:16px;
+display:inline-block;
+background:url('../img/location-mini.png') no-repeat;
+opacity:0.5;
+margin-left:-2px;
+margin-bottom:-2px;
+}
+
 #nav-controls {
 float:right;
 }
