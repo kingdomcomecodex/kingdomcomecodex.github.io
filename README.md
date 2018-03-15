@@ -5,6 +5,8 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 * Made by [nachazo](https://github.com/nachazo)
 
 ### Changelog:
+  * **1.4.1** (15/03/2018):
+    * Added soft animation effect to the plus/minus width.
   * **1.4** (15/03/2018):
     * Added much more entries with links to locate in the game map. Added where it fits for categories, society... Made using the last online map url option changes.
     * Added a window with "beware spoilers" advise for users opening map in some entries.
