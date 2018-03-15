@@ -277,7 +277,10 @@ function plusWidth()
         var mw = parseInt( $(this).css("max-width"), 10);
         if (mw>=35 && mw!=100) {
             mw = mw + 15;
-            $(this).css("max-width", mw+"%");
+            //$(this).css("max-width", mw+"%");
+			$(this).animate({
+				maxWidth: mw+"%",
+			}, 500);
             Cookies.set('kcd_codex_width', $(this).css("max-width"));
         }
     });
@@ -289,7 +292,10 @@ function minusWidth()
         var mw = parseInt( $(this).css("max-width"), 10);
         if (mw<=50) return false;
         mw = mw - 15;
-        $(this).css("max-width", mw+"%");
+        //$(this).css("max-width", mw+"%");
+        $(this).animate({
+			maxWidth: mw+"%",
+		}, 500);
         Cookies.set('kcd_codex_width', $(this).css("max-width"));
     });
 }
