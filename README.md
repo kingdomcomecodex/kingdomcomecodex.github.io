@@ -7,7 +7,7 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 ### Changelog:
   * **1.4** (15/03/2018):
     * Added much more entries with links to locate in the game map. Added where it fits for categories, society... Made using the last online map url option changes.
-    * Added a window with "beware spoilers" advise for users opening map.
+    * Added a window with "beware spoilers" advise for users opening map in some entries.
     * Added in the welcome page an option to delete all cookies of the codex (read marks, position, advises...).
     * Fixed that turkish language not being selected correctly.
   * **1.3** (15/03/2018):
