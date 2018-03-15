@@ -52,7 +52,7 @@ $(window).on("unload", function(e) {
 
 var firstUrlClean = true;
 
-var validLangs = ['en', 'es', 'ru', 'fr', 'de', 'it', 'zh', 'cs', 'pl'];
+var validLangs = ['en', 'es', 'ru', 'fr', 'de', 'it', 'zh', 'cs', 'pl', 'tk'];
 var specialFontLang = ['ru', 'zh'];
 function loadLang() {
     var lang = navigator.language || navigator.userLanguage;
@@ -197,6 +197,8 @@ function startThings()
         $("#main").css("margin-top", "24px");
         $(".open-in-map").hide();
     }
+
+    spoilerButtons();
 }
 
 function getUrlVars()
@@ -568,13 +570,77 @@ function previous(id)
     }
 }
 
-function openInMap(x, y, zoom)
+function deleteAllCookies()
 {
+    var have = false;
+    $.each(Cookies.get(), function( k, v ) {
+        if (k.indexOf("kcd_") >= 0) {
+            Cookies.remove(k);
+            have = true;
+        }
+    });
+    if (have == true) {
+        $(".cookie-delete-all").append(" &nbsp; <span>Ok!</span>");
+    }
+}
+
+function spoilerButtons()
+{
+    $("#yes-this").click(function() {
+        $("#aviso-spoiler").hide();
+        return openInMap(aux_x, aux_y, aux_zoom, false);
+    });
+    $("#yes-always").click(function() {
+        Cookies.set('kcd_codex_spoiler_accept', true);
+        $("#aviso-spoiler").hide();
+        return openInMap(aux_x, aux_y, aux_zoom, false);
+    });
+    $('#yes-this, #yes-always, #no-never').each(function(){
+        console.log(123);
+        $(this).hover(
+            function() {
+                $(this).css("border", "2px solid #700809");
+                $(this).css("opacity", "1");
+            }, function() {
+                $(this).css("border", "2px solid #555");
+                $(this).css("opacity", "0.9");
+            }
+        );
+    });
+}
+
+var aux_x;
+var aux_y;
+var aux_zoom;
+
+function openInMap(x, y, zoom, spoiler)
+{
+    aux_x = null;
+    aux_y = null;
+    aux_zoom = null;
     if (x && y) {
+        if (spoiler==true && Cookies.get('kcd_codex_spoiler_accept')!="true") {
+            aux_x = x;
+            aux_y = y;
+            aux_zoom = zoom;
+            $(document.body).append('<a href="#aviso-spoiler" id="tmplinks"></a>');
+            if(window.innerWidth <= 768) {
+                var topPos = 15;
+            } else {
+                var topPos = 50;
+            }
+            $("#tmplinks").leanModal({ top: topPos, closeButton: "#no-never" });
+            $("#tmplinks").click();
+            $("#tmplinks").remove();
+            return false;
+        }
+
         //var link = 'https://kingdomcomemap.github.io/#'+zoom+'/'+y+'.0/'+x+'.0';
         //var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'';
-        var link = 'https://kingdomcomemap.github.io/?marker=null#'+zoom+'/'+x+'.0/'+y+'.0';
+        //var link = 'https://kingdomcomemap.github.io/?marker=null#'+zoom+'/'+x+'.0/'+y+'.0';
         //window.open(link, '_blank');
+        $("#mapiframe").attr("src", "");
+        var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'&zoom='+zoom+'&sidebar=false&popup=false';        
         $(document.body).append('<a href="#divmapiframe" id="tmplink"></a>');
         if(window.innerWidth <= 768) {
             var topPos = 0;
