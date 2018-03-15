@@ -280,7 +280,7 @@ function plusWidth()
             //$(this).css("max-width", mw+"%");
 			$(this).animate({
 				maxWidth: mw+"%",
-			}, 500);
+			}, 150);
             Cookies.set('kcd_codex_width', $(this).css("max-width"));
         }
     });
@@ -295,7 +295,7 @@ function minusWidth()
         //$(this).css("max-width", mw+"%");
         $(this).animate({
 			maxWidth: mw+"%",
-		}, 500);
+		}, 150);
         Cookies.set('kcd_codex_width', $(this).css("max-width"));
     });
 }
@@ -602,7 +602,6 @@ function spoilerButtons()
         return openInMap(aux_x, aux_y, aux_zoom, false);
     });
     $('#yes-this, #yes-always, #no-never').each(function(){
-        console.log(123);
         $(this).hover(
             function() {
                 $(this).css("border", "2px solid #700809");
