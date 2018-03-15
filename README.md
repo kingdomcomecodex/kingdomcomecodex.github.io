@@ -5,6 +5,11 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 * Made by [nachazo](https://github.com/nachazo)
 
 * Versions:
+  * **1.3** (15/03/2018):
+    * Now each entry changes the uri and updates on article change.
+    * Add a optional way for help external link with variables in permalinks/url for hide controls (for clean lecture of an entry) and force language. This is the new permalink format: /?entry=ui_codex_demo&lang=en&clean=true
+    * Old permalink style still works (the way .../#ui_codex...) but priorized the new one.
+    * Temporary changes on the links used on open in map, untils updates to the external links to the map will be made.
   * **1.2.1** (14/03/2018):
     * Links to online map now open a modal window (shows also the link for open in new tab).
     * Fixed the position in mobile of the open in map icon.
