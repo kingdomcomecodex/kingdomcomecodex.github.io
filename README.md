@@ -4,7 +4,7 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 * Info etc on Reddit: https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/
 * Made by [nachazo](https://github.com/nachazo)
 
-* Versions:
+### Changelog:
   * **1.4** (15/03/2018):
     * Added much more entries with links to locate in the game map. Added where it fits for categories, society... Made using the last online map url option changes.
     * Added a window with "beware spoilers" advise for users opening map.
