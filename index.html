@@ -50,6 +50,8 @@ $(window).on("unload", function(e) {
     }
 });
 
+var firstUrlClean = true;
+
 var validLangs = ['en', 'es', 'ru', 'fr', 'de', 'it', 'zh', 'cs', 'pl'];
 var specialFontLang = ['ru', 'zh'];
 function loadLang() {
@@ -60,6 +62,12 @@ function loadLang() {
         lang = Cookies.get("kcd_codex_lang");
     }
     if (!lang) lang = "en";
+
+    var getVars = getUrlVars();
+    if (getVars['lang']) {
+        lang = getVars['lang'];
+    }
+
     if (!myInArray(lang, validLangs)) {
         lang = "en";
     }
@@ -99,6 +107,8 @@ function myInArray(what, arr)
 function startThings()
 {
     lazyload();
+
+    var getVars = getUrlVars();
 
     if (directLoadEntry()) {
         showEntry(directLoadEntry());
@@ -172,36 +182,89 @@ function startThings()
     if (Cookies.get('kcd_codex_width')) {
         $("div#entry").css("max-width", Cookies.get('kcd_codex_width'));
     }
-
     
     $("#escudo").dblclick(function() {
         showAll();
     });
 
     limpiarTeclasTutorial();
+
+    if (getVars['clean']=="true") {
+        $("#opennav").hide();
+        $(".codex-icons").hide();
+        $("div#nav-controls").hide()
+        $(".permalink").hide();
+        $("#main").css("margin-top", "24px");
+        $(".open-in-map").hide();
+    }
+}
+
+function getUrlVars()
+{
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+    });
+    return vars;
+}
+
+function removeVarsInUrl()
+{
+    var uri = window.location.toString();
+    if (uri.indexOf("?") > 0) {
+        var clean_uri = uri.substring(0, uri.indexOf("?"));
+        window.history.replaceState({}, document.title, clean_uri);
+    } else if (uri.indexOf("#") > 0) {
+        var clean_uri = uri.substring(0, uri.indexOf("#"));
+        window.history.replaceState({}, document.title, clean_uri);
+    }
+}
+
+function addVarInUrl(data)
+{
+    removeVarsInUrl();
+    if (data) {
+        window.history.replaceState({}, document.title, window.location.toString()+"?entry="+data);
+    } else {
+        window.history.replaceState({}, document.title, window.location.toString());
+    }
 }
 
 function cleanUrl()
 {
-    var direct = decodeURIComponent(window.location).split("#");
-    return direct[0];
+    var direct = decodeURIComponent(window.location);
+    if (direct.indexOf("?")>0) {
+        return direct.split("?")[0];
+    } else if (direct.indexOf("#")>0) {
+        return direct.split("#")[0];
+    } else {
+        return direct;
+    }
+    return false;
 }
 
 function directLoadEntry()
 {
-    var direct = decodeURIComponent(window.location).split("#");
-    if ($.isArray(direct) && direct[1]) {
-        if ($("div#entry."+direct[1]).length) {
-            return direct[1];
+    if (decodeURIComponent(window.location).indexOf("#")>0) {
+        var direct = decodeURIComponent(window.location).split("#");
+        if ($.isArray(direct) && direct[1]) {
+            if ($("div#entry."+direct[1]).length) {
+                return direct[1];
+            }
         }
-    }
+    } else {
+        var getVars = getUrlVars();
+        if (getVars['entry'] && $("div#entry."+getVars['entry']).length) {
+            return getVars['entry'];
+        }
+    }    
     return false;
 }
 
 function permalink(data)
 {
     if (data) {
-        prompt("", cleanUrl()+"#"+data);
+        prompt("", cleanUrl()+"?entry="+data);
     }
     return false;
 }
@@ -337,6 +400,11 @@ function showEntry(entry, category) {
             colorize(entry, category);
             closeNav();
             $(window).scrollTop(0);
+            if (firstUrlClean==true) {
+                firstUrlClean = false;
+                return true;
+            }
+            addVarInUrl(entry);
         }
     });
 }
@@ -349,6 +417,7 @@ function showOnly(cat) {
             $(this).fadeIn("fast");
         }
     });
+    addVarInUrl();
     closeNav();
     $(window).scrollTop(0);
 }
@@ -502,8 +571,9 @@ function previous(id)
 function openInMap(x, y, zoom)
 {
     if (x && y) {
-        var link = 'https://kingdomcomemap.github.io/#'+zoom+'/'+y+'.0/'+x+'.0';
-        var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'';
+        //var link = 'https://kingdomcomemap.github.io/#'+zoom+'/'+y+'.0/'+x+'.0';
+        //var link = 'https://kingdomcomemap.github.io/?marker='+y+','+x+'';
+        var link = 'https://kingdomcomemap.github.io/?marker=null#'+zoom+'/'+x+'.0/'+y+'.0';
         //window.open(link, '_blank');
         $(document.body).append('<a href="#divmapiframe" id="tmplink"></a>');
         if(window.innerWidth <= 768) {
