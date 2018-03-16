@@ -1,7 +1,7 @@
 # kingdomcomecodex.github.io
 Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.io)
 
-* Info etc on Reddit: https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/
+* Reddit link: https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/
 * Made by [nachazo](https://github.com/nachazo)
 
 ### Changelog:
@@ -32,3 +32,32 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
     * Added a permalink icon in the bottom left, this gives a permanent direct link for each article (maybe relocated anytime in the future).  
   * **1.0** (10/03/2018):
     * Initial release
+
+### About
+
+This project converts the in-game codex feature from [Kingdom Come: Deliverance](https://www.kingdomcomerpg.com) game into a online web. I made because I want to read comfortably in my smartphone (or any web browser) the whole game codex, with so nice historical and KCD world info. Also I wanted practice some web developement things, so this is a good way for it!
+
+Some comments:
+
+- It's made with the game XML language files, so it bundles the 10 languages that the game support (with 1.3 also with turkish!).
+- In sum, I made a script (in php) that transform these xml files to html that you saw, with (hope) nice design.
+- It has all entries unblocked. As only a few are unlocked by default in the game start, I prefer to pull the complete codex. In my opinion, no spoilers where there (you can feedback about).
+- Of course is adapted for mobile and pc screens.
+- You could mark as read articles (for mark where your last read position, for example). Also the last article viewed and selected width are stored on a cookie :)
+- I tried to make somekind of comfortably way to read: search, image zooms, increase-decrease width, etc.
+
+And another ones...:
+
+- Kudos to the online map (is linked): fonts and default background image taken from these.
+- As this uses extensively jquery and css3, you need a decent modern browser for sure (tested on Firefox & Chrome).
+- Of course probably could be better programmed.
+- Also for host in githubio, pages are in one html, bigger than normal websites (one general and one for each language).
+- As it's massive export from XML files, could be errors that I've not detected. You can notify that on github: https://github.com/kingdomcomecodex/kingdomcomecodex.github.io/issues
+- Of course, feedback, request, etc could be made in the same url.
+- The same for some translated texts.
+- Game developers are notified of this and no problem :)
+- Making that I take account that "ui_tutorial_cont_combat_basic" (basic combat help) are translated only in the english xml file! So "Combat" in part tutorial seems to be only in english (in fact i'm not sure it shows in "Tutorials" tab in the game).
+
+Feedback is welcome, of course.
+
+Hope this helps somebody.
