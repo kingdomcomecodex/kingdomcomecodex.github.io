@@ -43,7 +43,7 @@ This project converts the in-game codex feature from [Kingdom Come: Deliverance]
 Some comments:
 
 - It's made with the game XML language files, so it bundles the 10 languages that the game support (with 1.3 also with turkish!).
-- In sum, I made a script (in php) that transform these xml files to html that you saw, with (hope) nice design.
+- In sum, I made a script (in php) that transform these xml files to html that you saw, with (hope) nice design. The script source code is also in GitHub, here: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 - It has all entries unblocked. As only a few are unlocked by default in the game start, I prefer to pull the complete codex. In my opinion, no spoilers where there (you can feedback about).
 - Of course is adapted for mobile and pc screens.
 - You could mark as read articles (for mark where your last read position, for example). Also the last article viewed and selected width are stored on a cookie :)
