@@ -3,8 +3,11 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 
 * [Reddit link](https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/)
 * Made by [nachazo](https://github.com/nachazo)
+* Link to project-script that makes this html from xml lang giles: 
 
 ### Changelog:
+  * **1.4.2** (16/03/2018):
+    * Fixed in german language an error with a text from a modal box.
   * **1.4.1** (15/03/2018):
     * Added soft animation effect to the plus/minus width.
   * **1.4** (15/03/2018):
