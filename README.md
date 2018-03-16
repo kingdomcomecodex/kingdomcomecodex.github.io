@@ -3,11 +3,12 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 
 * [Reddit link](https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/)
 * Made by [nachazo](https://github.com/nachazo)
-* Link to project php script that generates this website from xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
+* Link to project php script that generates this website from game xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 
 ### Changelog:
   * **1.4.2** (16/03/2018):
     * Fixed in german language an error with a text from a modal box.
+    * Changed width from bottom advise (to avoid three lines).
   * **1.4.1** (15/03/2018):
     * Added soft animation effect to the plus/minus width.
   * **1.4** (15/03/2018):
@@ -42,17 +43,17 @@ This project converts the in-game codex feature from [Kingdom Come: Deliverance]
 
 Some comments:
 
-- It's made with the game XML language files, so it bundles the 10 languages that the game support (with 1.3 also with turkish!).
+- It's made with the game XML language files, so it bundles the 10 languages that the game supports (with 1.3 also with turkish!).
 - In sum, I made a script (in php) that transform these xml files to html that you saw, with (hope) nice design. The script source code is also in GitHub, here: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 - It has all entries unblocked. As only a few are unlocked by default in the game start, I prefer to pull the complete codex. In my opinion, no spoilers where there (you can feedback about).
-- Of course is adapted for mobile and pc screens.
+- Adapted for mobile and pc screens.
 - You could mark as read articles (for mark where your last read position, for example). Also the last article viewed and selected width are stored on a cookie :)
 - I tried to make somekind of comfortably way to read: search, image zooms, increase-decrease width, etc.
 
 And another ones...:
 
 - Kudos to the online map (is linked): fonts and default background image taken from these.
-- As this uses extensively jquery and css3, you need a decent modern browser for sure (tested on Firefox & Chrome).
+- As this uses extensively jquery and css3, you need a decent modern browser (tested on Firefox & Chrome).
 - Of course probably could be better programmed.
 - Also for host in githubio, pages are in one html, bigger than normal websites (one general and one for each language).
 - As it's massive export from XML files, could be errors that I've not detected. You can notify that on github: https://github.com/kingdomcomecodex/kingdomcomecodex.github.io/issues
