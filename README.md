@@ -3,7 +3,7 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 
 * [Reddit link](https://www.reddit.com/r/kingdomcome/comments/83g3l4/kingdom_come_deliverance_codex_online_web/)
 * Made by [nachazo](https://github.com/nachazo)
-* Link to project-script that makes this html from xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
+* Link to project php script that generates this website from xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 
 ### Changelog:
   * **1.4.2** (16/03/2018):
