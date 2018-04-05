@@ -6,6 +6,8 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 * Link to project php script that generates this website from game xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 
 ### Changelog:
+  * **1.4.3** (05/04/2018):
+    * Minor improvements in CS language welcome texts.
   * **1.4.2** (16/03/2018):
     * Fixed in german language an error with a text from a modal box.
     * Changed width from bottom advise (to avoid three lines).
