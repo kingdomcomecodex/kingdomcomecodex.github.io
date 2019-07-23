@@ -6,6 +6,10 @@ Kingdom Come: Deliverance Codex online reader (https://kingdomcomecodex.github.i
 * Link to project php script that generates this website from game xml lang files: [nachazo/kingdomcomecodex-php-generator](https://github.com/nachazo/kingdomcomecodex-php-generator).
 
 ### Changelog:
+  * **1.5** (23/07/2019):
+    * Updated with new lang files version, from the last game update. A few new chapters (thanks @Francys55555).
+    * Still no new languages, estonian and ukranian XML files are uncomplete and japanese still no in the game files.
+    * Fixed some UI text of polish version (issue #4, thanks @Matik7)
   * **1.4.3** (05/04/2018):
     * Minor improvements in CS language welcome texts.
   * **1.4.2** (16/03/2018):
