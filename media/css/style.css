@@ -76,6 +76,11 @@ height:auto;
 transform:translateY(-10%) scaleY(0.80);
 margin-bottom:-17%;
 }
+.ui_codex_name_jaroslav_img,
+.ui_codex_name_matej_img {
+transform:translateY(0%) scaleY(1) !important;
+margin-bottom:0% !important;
+}
 .ui_codex_name_opati_img, .ui_codex_name_heraldika_img {
 /*transform:translateY(0%) scaleY(1);
 margin-bottom:0%;*/
